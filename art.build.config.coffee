@@ -2,9 +2,10 @@ module.exports =
   npm:
     description:        "caffeine-script demo project"
     dependencies:
-      "art-foundation":   "git://github.com/imikimi/art-foundation.git"
-      "caffeine-script":  "git@github.com:shanebdavis/caffeine-script-runtime.git"
-      colors:             "^1.1.2"
+      "art-standard-lib":         "^1.0.0"
+      "caffeine-script":          ">=0.0.0"
+      "caffeine-script-runtime":  ">=0.0.0"
+      colors:                     "^1.1.2"
 
     scripts:
       test:     "nn -s;mocha -u tdd --compilers coffee:coffee-script/register"
@@ -12,9 +13,7 @@ module.exports =
 
   webpack:
     common:
+      target: "node"
       resolve: extensions: [".caf", ".caffeine"]
       module:
         rules: [test: /\.caf(feine)?$/, loader: "caffeine-mc/webpack-loader"]
-
-    targets:
-      demo: {}
