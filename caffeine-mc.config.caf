@@ -1,0 +1,2 @@
+|caffeine-script
+  require 'coffee-script/register'
