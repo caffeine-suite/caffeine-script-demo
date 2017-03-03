@@ -64,7 +64,7 @@ module.exports =
 /******/ 	__webpack_require__.p = "";
 
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 5);
+/******/ 	return __webpack_require__(__webpack_require__.s = 6);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -114,7 +114,7 @@ Caf.defMod(module, () => {return __webpack_require__(3);});
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(module) {let Caf = __webpack_require__(1);
-Caf.defMod(module, () => {let ArtStandardLib = __webpack_require__(4), source, value, log, JSON; ({log, JSON} = Caf.i(["log", "JSON"], [ArtStandardLib, global]));({source, value} = {source: "# implicit arrays\na:\n  1 2 3\n  4 5 6\n  7 8 9\n\n# :unquotedStrings and more implicit arrays\nmatch:\n  pattern: :blah  action: :boring\n  pattern: :zoom  action: :yay!", value: ({a: [[1, 2, 3], [4, 5, 6], [7, 8, 9]], match: [{pattern: "blah", action: "boring"}, {pattern: "zoom", action: "yay!"}]})}); return log((["Welcome to CaffeineScript!", "Where this code:", source.replace(/(^|\n)/g, "$1  "), "generates this:", ("  ") + JSON.stringify(value)]).join("\n\n"));});
+Caf.defMod(module, () => {let ArtStandardLib = __webpack_require__(4), colors = __webpack_require__(5), source, value, log, JSON; ({log, JSON} = Caf.i(["log", "JSON"], [ArtStandardLib, global]));colors; ({source, value} = {source: "# implicit arrays\na:\n  1 2 3\n  4 5 6\n  7 8 9\n\n# :unquotedStrings and more implicit arrays\nmatch:\n  pattern: :blah  action: :boring\n  pattern: :zoom  action: :yay!", value: ({a: [[1, 2, 3], [4, 5, 6], [7, 8, 9]], match: [{pattern: "blah", action: "boring"}, {pattern: "zoom", action: "yay!"}]})}); return log(([("Welcome to CaffeineScript!").yellow, "Where this code:", source.replace(/(^|\n)/g, "$1  ").green, "generates this:", (("  ") + JSON.stringify(value)).green]).join("\n\n"));});
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)(module)))
 
 /***/ }),
@@ -125,6 +125,12 @@ module.exports = require("art-standard-lib");
 
 /***/ }),
 /* 5 */
+/***/ (function(module, exports) {
+
+module.exports = require("colors");
+
+/***/ }),
+/* 6 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__(2);

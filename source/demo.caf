@@ -1,5 +1,6 @@
 |caffeine-script
 import &ArtStandardLib
+&colors
 
 {source, value} = <capture>
   # implicit arrays
@@ -16,14 +17,17 @@ import &ArtStandardLib
 log
   []
     "" Welcome to CaffeineScript!
+    .yellow
 
     "" Where this code:
 
     source
     .replace /(^|\n)/g, "$1  "  # indent
+    .green
 
     "" generates this:
 
     "  " + JSON.stringify value
+    .green
 
   .join '\n\n'
