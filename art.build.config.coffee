@@ -14,9 +14,7 @@ module.exports =
     common:
       resolve: extensions: [".caf", ".caffeine"]
       module:
-        rules: [
-          test: /\.caf(feine)?$/, loader: "caffeine-mc/webpack-loader"
-        ]
+        rules: [test: /\.caf(feine)?$/, loader: "caffeine-mc/webpack-loader"]
 
     targets:
       demo: {}
