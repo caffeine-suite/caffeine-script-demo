@@ -1,0 +1,14 @@
+import &ArtSuite
+
+class Slide07InternetsVm extends Component
+
+  render: ->
+    &Slide
+      title: "" The Internet's Virtual Machine
+      align: :centerLeft
+      body:
+        """
+          Keep the Heart, replace the Body.
+
+          JavaScript: The Internet's VM
+          JavaScript: The Internet's Assembly Language

@@ -1,0 +1,43 @@
+import &ArtSuite
+
+class Slide06JsBad extends PointerActionsMixin Component
+
+  render: ->
+    Element
+      childrenLayout: :column
+      childrenAlignment: :center
+      padding: bottom: 75
+
+      &Slide
+        title: "" JavaScript's Ailing Body
+        body:
+          """
+            anti-functional, anti-oo,
+            dangerous and verbose syntax
+            dangerous semanatics
+
+
+      BitmapElement
+        on: @buttonHandlers
+        size: h: 400, w: (ps, cs) -> cs.aspectRatio * 400
+        layout: :fit
+        source: :/assets/SickBody.jpg
+        FillElement()
+        Element
+          opacity: if @hover || @pointerIsDown then 1 else 0
+          animators: opacity: true
+          RectangleElement colors: #dac79d #887458
+
+          TextElement
+            &StyleProps.text
+            color: #832b14
+            size: ps: 1
+            align: :centerCenter
+            padding: 25
+            fontSize: 50
+            fontWeight: :bold
+            text:
+              """
+                We can rebuild it.
+                We have the technology.
+

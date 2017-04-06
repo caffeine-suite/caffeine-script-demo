@@ -3,5 +3,7 @@
 
 module.exports = require './namespace'
 .addModules
-  App: require './App'
+  App:       require './App'      
+  FunButton: require './FunButton'
+  Slide:     require './Slide'    
 require './Slides'

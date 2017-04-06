@@ -1,0 +1,21 @@
+import &ArtSuite
+
+class Slide20PoweredByCaffeineMc extends Component
+
+  render: ->
+    Element
+      childrenLayout: :column
+      childrenAlignment: :center
+      padding: bottom: 100
+
+      &Slide
+        title: "" Powered by
+        body:
+          """
+            ArtSuite
+            BabelBridgeJS
+
+      BitmapElement
+        size: h: 400, w: (ps, cs) -> cs.aspectRatio * 400
+        layout: :fit
+        source: :/assets/CaffeineMcLogo.png

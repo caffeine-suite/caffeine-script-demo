@@ -1,0 +1,17 @@
+import &ArtSuite
+
+class Slide extends Component
+  render: ->
+    {title, body, align} = @props
+
+    Element
+      &StyleProps.slideLayout
+
+      title && TextElement
+        &StyleProps.slideTitle
+        text: title
+
+      body && TextElement
+        &StyleProps.slideBodyText
+        text: body
+        align: align || :centerCenter

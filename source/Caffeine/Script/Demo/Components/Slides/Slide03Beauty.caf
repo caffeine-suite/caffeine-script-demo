@@ -1,11 +1,9 @@
 import &ArtSuite
 
-class Slide03Beauty extends PointerActionsMixin Component
+class Slide03Beauty extends Component
 
   render: ->
-    TextElement
-      &StyleProps.textOnlySlideText
-      text:
-        ""
-          The best way to enhance our
-          productivity is through good design.
+    &Slide body:
+      ""
+        The best way to enhance our
+        productivity is through good design.

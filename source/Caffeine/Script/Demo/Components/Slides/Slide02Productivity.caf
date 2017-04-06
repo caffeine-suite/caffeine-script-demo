@@ -1,8 +1,6 @@
 import &ArtSuite
 
-class Slide02Productivity extends PointerActionsMixin Component
+class Slide02Productivity extends Component
 
   render: ->
-    TextElement
-      &StyleProps.textOnlySlideText
-      text: "" In programming, productivity is everything.
+    &Slide body: "" In programming, productivity is everything.

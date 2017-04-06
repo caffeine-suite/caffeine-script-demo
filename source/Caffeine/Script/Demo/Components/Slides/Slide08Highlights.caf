@@ -1,0 +1,17 @@
+import &ArtSuite
+
+class Slide08Highlights extends PointerActionsMixin Component
+
+  render: ->
+
+    &Slide
+      title: "" Beyond JavaScript
+      align: :centerLeft
+      body:
+        """
+          Beautiful, Logical and Consistent
+          Everything Returns a Value
+          Seamless CommonJS Modules
+          Comprehensions and Iteration
+          Expressive Literals
+          Safe Semantics

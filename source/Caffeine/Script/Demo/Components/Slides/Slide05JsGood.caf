@@ -1,0 +1,21 @@
+import &ArtSuite
+
+class Slide05JsGood extends Component
+
+  render: ->
+    Element
+      childrenLayout: :row
+      padding: v: 100
+
+      &FunButton
+        source: :/assets/HeartDiagram.jpg
+        angle:  0 - Math.PI/4
+
+      &Slide
+        title: "" JavaScript's Golden Heart
+        body:
+          """
+            first class functions
+            prototype OO
+            dynamic typing
+            garbage collection

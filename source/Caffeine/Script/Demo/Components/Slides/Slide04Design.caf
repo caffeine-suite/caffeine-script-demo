@@ -1,13 +1,12 @@
 import &ArtSuite
 
-class Slide04Design extends PointerActionsMixin Component
-  render: ->
-    TextElement
-      &StyleProps.textOnlySlideText
-      text:
-        """
-          Good Design
+class Slide04Design extends Component
 
+  render: ->
+    &Slide
+      title: "" Good Design
+      body:
+        """
           focused
           beautiful
           pleasurable

@@ -1,0 +1,27 @@
+import &ArtSuite
+
+class FunButton extends PointerActionsMixin Component
+  render: ->
+    {angle, source, scale} = @props
+
+    BitmapElement
+      source:       source
+
+      on:           @buttonHandlers
+      cursor:       :pointer
+      layout:       :fit
+
+      axis:         :centerCenter
+      location: ps: :centerCenter
+
+      margin:       30
+      scale:        if @pointerIsDown           then scale || 0.5 else 1
+      angle:        if @hover || @pointerIsDown then angle || Math.PI * 2.0 else 0
+
+      size:
+        hh:         1
+        w:          (ps, cs) -> cs.aspectRatio * ps.y
+
+      animators:
+        scale:      f: :easeInElastic d: 2
+        angle:      f: :easeInElastic d: 5

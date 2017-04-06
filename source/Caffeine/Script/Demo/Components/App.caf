@@ -37,13 +37,13 @@ class App extends PointerActionsMixin Component
   render: ->
     CanvasElement
       Element
+        key:        @currentSlide.getName()
         animators:
           opacity:  toFrom: 0
           axis:     toFrom: y: -.5, x: 0
-        key: @currentSlide.getName()
 
         RectangleElement
-          color: :black
+          color:        :black
 
         Element
           axis:         :centerCenter
