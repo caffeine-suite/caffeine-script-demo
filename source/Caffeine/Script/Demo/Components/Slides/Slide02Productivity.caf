@@ -1,0 +1,8 @@
+import &ArtSuite
+
+class Slide02Productivity extends PointerActionsMixin Component
+
+  render: ->
+    TextElement
+      &StyleProps.textOnlySlideText
+      text: "" In programming, productivity is everything.

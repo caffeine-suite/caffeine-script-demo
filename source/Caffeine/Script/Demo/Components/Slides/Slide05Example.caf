@@ -1,0 +1,10 @@
+import &ArtSuite
+
+class Slide05Example extends PointerActionsMixin Component
+  render: ->
+    Element
+      padding: 100
+      RectangleElement color: #222222
+      BitmapElement
+        source: :/assets/CaffeineScriptLoginDemo.png
+        layout: :fit

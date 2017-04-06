@@ -1,0 +1,15 @@
+import &ArtSuite
+
+class Slide04Design extends PointerActionsMixin Component
+  render: ->
+    TextElement
+      &StyleProps.textOnlySlideText
+      text:
+        """
+          Good Design
+
+          focused
+          beautiful
+          pleasurable
+          discoverable
+          minimal

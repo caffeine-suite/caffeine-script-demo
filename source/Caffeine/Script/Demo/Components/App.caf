@@ -1,0 +1,64 @@
+import &ArtSuite
+
+class Button extends PointerActionsMixin Component
+
+  render: ->
+    Element
+      on: @buttonHandlers
+      cursor: :pointer
+
+      size: w: 100, h: 30
+      axis: :centerCenter
+      location: ps: :centerCenter
+
+      scale: if @pointerIsDown   then .9 else 1
+      animators: scale: true
+
+      RectangleElement color: #b1c34d, radius: 1000
+      TextElement
+        size: cs: 1
+        &StyleProps.buttonText
+        axis: :centerCenter
+        location: ps: :centerCenter
+        text: @props.text || "hi"
+
+class App extends PointerActionsMixin Component
+
+  @stateFields
+    slides: slides = array &Slides.modules
+    currentSlideIndex: 0
+
+  @getter
+    currentSlide: -> @slides[@currentSlideIndex %% @slides.length]
+
+  previousSlide:  -> @currentSlideIndex -= 1
+  nextSlide:      -> @currentSlideIndex += 1
+
+  render: ->
+    CanvasElement
+      Element
+        animators:
+          opacity: toFrom: 0
+          axis: toFrom: y: -.5, x: 0
+        key: @currentSlide.getName()
+        RectangleElement
+          color: :black
+
+        Element
+          axis: :centerCenter
+          location: ps: :centerCenter
+          size: w: 1920, h: 1080
+          scale: (ps, cs) -> ps.div(cs).min()
+          @currentSlide()
+
+      Element
+        childrenLayout: "row"
+        size: cs: 1
+        padding: 5
+        on: @buttonHandlers
+        animators: opacity: true
+        opacity: if @hover then 1 else .1
+
+        Button text: "previous", action: @previousSlide
+        Element()
+        Button text: "next", action: @nextSlide

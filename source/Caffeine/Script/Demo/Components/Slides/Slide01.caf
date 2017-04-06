@@ -1,0 +1,47 @@
+import &ArtSuite
+
+class CaffeineButton extends PointerActionsMixin Component
+  render: ->
+    BitmapElement
+      source:       @props.source
+      on:           @buttonHandlers
+      cursor:       :pointer
+      layout:       "fit"
+
+      axis:         :centerCenter
+      location: ps: :centerCenter
+
+      margin:   30
+      scale:    if @pointerIsDown   then .5 else 1
+      angle:    Math.PI * if @hover then 2  else 0
+
+      size:
+        hh: 1
+        w:  (ps, cs) -> cs.aspectRatio * ps.y
+
+      animators:
+        scale: f: :easeInElastic  d: 2
+        angle: f: :easeInElastic  d: 5
+
+class Slide01 extends PointerActionsMixin Component
+
+  render: ->
+
+    Element
+      Element
+        childrenLayout: :row
+        size: h: 100, wcw: 1
+        axis: :centerCenter
+        location: ps: :centerCenter
+        scale: (ps, cs) -> ps.div(cs).min() * .6
+
+        CaffeineButton source: :/assets/CaffeineScriptIcon.png
+        CaffeineButton source: :/assets/CaffeineScriptText.png
+
+      TextElement
+        &StyleProps.text
+        text: "by Shane Brinkman-Davis Delamore @ imikimi LLC"
+        axis: :bottomCenter
+        location: xw: .5, yh: 1, y:-50
+        fontSize: 32
+        color: #fff3

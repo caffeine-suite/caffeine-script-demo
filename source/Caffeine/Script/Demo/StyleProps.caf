@@ -1,0 +1,20 @@
+import &ArtSuite
+
+class StyleProps extends HotStyleProps
+  @text:
+    fontFamily: "Bangla MN"
+    color:      #BDD833
+
+  @textOnlySlideText: merge
+    @text
+    colors:       #E4EDA7 #BDD833 #6D7F1E
+    fontSize:     100
+    size:         cs: 1, max: ww: .75
+    axis:         :centerCenter
+    align:        :centerCenter
+    location: ps: :centerCenter
+
+  @buttonText:
+    color: #fffa
+    fontFamily: "Bangla MN"
+    fontSize: 16

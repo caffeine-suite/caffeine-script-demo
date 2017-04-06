@@ -13,7 +13,6 @@ module.exports =
 
   webpack:
     common:
-      target: "node"
 
       # for buildling caf files:
       resolve: extensions: [".caf", ".caffeine"]
