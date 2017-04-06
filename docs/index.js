@@ -42322,7 +42322,7 @@ Caf.defMod(module, () => {let ArtSuite = __webpack_require__(12), Component, Ele
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(module) {let Caf = __webpack_require__(10);
-Caf.defMod(module, () => {let ArtSuite = __webpack_require__(12), App = __webpack_require__(136); return ArtSuite.initArtSuiteApp({MainComponent: App});});
+Caf.defMod(module, () => {let ArtSuite = __webpack_require__(12), App = __webpack_require__(136); return ArtSuite.initArtSuiteApp({MainComponent: App, title: "CaffineScript Demo Slideshow"});});
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)(module)))
 
 /***/ }),
