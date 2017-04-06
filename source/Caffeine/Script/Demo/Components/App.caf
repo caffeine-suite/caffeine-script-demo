@@ -4,29 +4,29 @@ class Button extends PointerActionsMixin Component
 
   render: ->
     Element
-      on: @buttonHandlers
-      cursor: :pointer
+      on:           @buttonHandlers
+      cursor:       :pointer
 
-      size: w: 100, h: 30
-      axis: :centerCenter
+      size:         w: 100, h: 30
+      axis:         :centerCenter
       location: ps: :centerCenter
 
-      scale: if @pointerIsDown   then .9 else 1
-      animators: scale: true
+      scale:        if @pointerIsDown then .9 else 1
+      animators:    scale: true
 
-      RectangleElement color: #b1c34d, radius: 1000
+      RectangleElement color: #333, radius: 1000
       TextElement
-        size: cs: 1
         &StyleProps.buttonText
-        axis: :centerCenter
+        size:         cs: 1
+        axis:         :centerCenter
         location: ps: :centerCenter
-        text: @props.text || "hi"
+        text:         @props.text
 
 class App extends PointerActionsMixin Component
 
   @stateFields
-    slides: slides = array &Slides.modules
-    currentSlideIndex: 0
+    slides:             slides = array &Slides.modules
+    currentSlideIndex:  0
 
   @getter
     currentSlide: -> @slides[@currentSlideIndex %% @slides.length]
@@ -38,27 +38,31 @@ class App extends PointerActionsMixin Component
     CanvasElement
       Element
         animators:
-          opacity: toFrom: 0
-          axis: toFrom: y: -.5, x: 0
+          opacity:  toFrom: 0
+          axis:     toFrom: y: -.5, x: 0
         key: @currentSlide.getName()
+
         RectangleElement
           color: :black
 
         Element
-          axis: :centerCenter
+          axis:         :centerCenter
           location: ps: :centerCenter
-          size: w: 1920, h: 1080
-          scale: (ps, cs) -> ps.div(cs).min()
+          size:         w: 1920, h: 1080
+          scale:        (ps, cs) -> ps.div(cs).min()
+
           @currentSlide()
 
       Element
-        childrenLayout: "row"
-        size: cs: 1
-        padding: 5
-        on: @buttonHandlers
-        animators: opacity: true
-        opacity: if @hover then 1 else .1
+        childrenLayout: :row
+        size:           cs: 1
+        padding:        5
+        on:             @buttonHandlers
+        animators:      opacity: true
+        opacity:        if @hover then 1 else .1
 
-        Button text: "previous", action: @previousSlide
+        Button text: "previous",  action: @previousSlide
+
         Element()
-        Button text: "next", action: @nextSlide
+
+        Button text: "next",      action: @nextSlide

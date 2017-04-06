@@ -3,7 +3,7 @@
 
 module.exports = require './namespace'
 .addModules
-  Slide01:             require './Slide01'            
+  Slide01Logo:         require './Slide01Logo'        
   Slide02Productivity: require './Slide02Productivity'
   Slide03Beauty:       require './Slide03Beauty'      
   Slide04Design:       require './Slide04Design'      
