@@ -1,0 +1,14 @@
+import &ArtSuite
+
+class Slide09ProgrammingStyles extends PointerActionsMixin Component
+
+  render: ->
+
+    &Slide
+      title: "" CaffeineScript - Designed for...
+      align: :centerLeft
+      body:
+        """
+          Object Oriented Programming
+          Declarative Programming
+          Functional Programming
