@@ -59,7 +59,7 @@ class App extends PointerActionsMixin Component
         padding:        5
         on:             @buttonHandlers
         animators:      opacity: true
-        opacity:        if @hover then 1 else .1
+        opacity:        if @hover then 1 else .5
 
         Button text: "previous",  action: @previousSlide
 
