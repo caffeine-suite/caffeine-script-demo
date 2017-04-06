@@ -8,7 +8,7 @@ class Slide05JsGood extends Component
       padding: v: 100
 
       &FunButton
-        source: :/assets/HeartDiagram.jpg
+        source: :assets/HeartDiagram.jpg
         angle:  0 - Math.PI/4
 
       &Slide

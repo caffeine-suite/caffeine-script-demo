@@ -13,8 +13,8 @@ class Slide01Logo extends Component
         location: ps:   :centerCenter
         scale:          (ps, cs) -> ps.div(cs).min() * .6
 
-        &FunButton source: :/assets/CaffeineScriptIcon.png
-        &FunButton source: :/assets/CaffeineScriptText.png
+        &FunButton source: :assets/CaffeineScriptIcon.png
+        &FunButton source: :assets/CaffeineScriptText.png
 
       TextElement
         &StyleProps.text

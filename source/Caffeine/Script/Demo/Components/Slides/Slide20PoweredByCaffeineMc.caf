@@ -18,4 +18,4 @@ class Slide20PoweredByCaffeineMc extends Component
       BitmapElement
         size: h: 400, w: (ps, cs) -> cs.aspectRatio * 400
         layout: :fit
-        source: :/assets/CaffeineMcLogo.png
+        source: :assets/CaffeineMcLogo.png

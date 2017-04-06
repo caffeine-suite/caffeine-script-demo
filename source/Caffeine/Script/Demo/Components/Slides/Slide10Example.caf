@@ -9,5 +9,5 @@ class Slide10Example extends PointerActionsMixin Component
       RectangleElement color: #222222
 
       BitmapElement
-        source: :/assets/CaffeineScriptLoginDemo.png
+        source: :assets/CaffeineScriptLoginDemo.png
         layout: :fit

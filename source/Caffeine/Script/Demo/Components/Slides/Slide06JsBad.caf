@@ -21,7 +21,7 @@ class Slide06JsBad extends PointerActionsMixin Component
         on: @buttonHandlers
         size: h: 400, w: (ps, cs) -> cs.aspectRatio * 400
         layout: :fit
-        source: :/assets/SickBody.jpg
+        source: :assets/SickBody.jpg
         FillElement()
         Element
           opacity: if @hover || @pointerIsDown then 1 else 0
