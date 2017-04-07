@@ -8,8 +8,9 @@ Be sure to try hovering and clicking on the various images ;).
 
 ```
 git clone git@github.com:shanebdavis/caffeine-script-demo.git
-cd caffeine-script-demo
-npm start
+cd caffeine-script-demo/
+npm install
+node_modules/.bin/webpack-dev-server
 ```
 
 Then go here: http://localhost:8080/index
