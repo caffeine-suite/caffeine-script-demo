@@ -1,3 +1,4 @@
+# CaffeineScript: Slide.caf
 import &ArtSuite
 
 class Slide extends Component
@@ -9,9 +10,9 @@ class Slide extends Component
 
       title && TextElement
         &StyleProps.slideTitle
-        text: title
+        text:   title
 
       body && TextElement
         &StyleProps.slideBodyText
-        text: body
-        align: align || :centerCenter
+        text:   body
+        align:  align || :centerCenter

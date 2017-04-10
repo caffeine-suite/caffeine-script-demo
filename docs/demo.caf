@@ -1,0 +1,17 @@
+# CaffeineScript
+import &ArtSuite
+
+class Login extends Component
+  render: ->
+    Element
+      childrenLayout: :column
+
+      TextElement
+        &StyleProps.label
+        size: ww: 1, hch: 1
+        text: "" login
+
+      TextElement
+        &StyleProps.textInput
+        size: ww: 1, hch: 1
+        text: "" username

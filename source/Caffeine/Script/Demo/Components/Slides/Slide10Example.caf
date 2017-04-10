@@ -2,12 +2,27 @@ import &ArtSuite
 
 class Slide10Example extends PointerActionsMixin Component
 
+  @stateFields showCompiled: false
+
+  action: -> @showCompiled = !@showCompiled
+
   render: ->
     Element
+      on: @buttonHandlers
+      cursor: :pointer
       padding: 100
 
       RectangleElement color: #222222
 
-      BitmapElement
-        source: :assets/CaffeineScriptLoginDemo.png
-        layout: :fit
+      Element
+        childrenLayout: :row
+
+        BitmapElement
+          source: :assets/CaffeineScriptDemo.png
+          layout: :fit
+
+        BitmapElement
+          layoutWeight: if @showCompiled then 1.4 else .4
+          animators: layoutWeight: true
+          source: :assets/CaffeineScriptDemoCompiled.png
+          layout: :fit

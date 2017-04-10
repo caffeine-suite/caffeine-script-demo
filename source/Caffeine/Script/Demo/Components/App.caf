@@ -20,6 +20,7 @@ class App extends PointerActionsMixin Component
 
       Element
         key:        @currentSlide.getName()
+        cacheDraw:  true
         animators:
           opacity:  toFrom: 0
           axis:     toFrom: y: -.5, x: 0
