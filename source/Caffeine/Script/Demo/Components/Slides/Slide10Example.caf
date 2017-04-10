@@ -22,7 +22,7 @@ class Slide10Example extends PointerActionsMixin Component
           layout: :fit
 
         BitmapElement
-          layoutWeight: if @showCompiled then 1.4 else .4
+          layoutWeight: if @showCompiled then 2 else .94
           animators: layoutWeight: true
           source: :assets/CaffeineScriptDemoCompiled.png
           layout: :fit
