@@ -1,27 +1,5 @@
 import &ArtSuite
 
-class Button extends PointerActionsMixin Component
-
-  render: ->
-    Element
-      on:           @buttonHandlers
-      cursor:       :pointer
-
-      size:         w: 100, h: 50
-      axis:         :centerCenter
-      location: ps: :centerCenter
-
-      scale:        if @pointerIsDown then .9 else 1
-      animators:    scale: true
-
-      RectangleElement color: #555, radius: 1000
-      TextElement
-        &StyleProps.buttonText
-        size:         cs: 1
-        axis:         :centerCenter
-        location: ps: :centerCenter
-        text:         @props.text
-
 class App extends PointerActionsMixin Component
 
   @stateFields
@@ -62,8 +40,8 @@ class App extends PointerActionsMixin Component
         animators:      opacity: true
         opacity:        if @hover then 1 else .5
 
-        Button text: "previous",  action: @previousSlide
+        &Button text: "previous",  action: @previousSlide
 
         Element()
 
-        Button text: "next",      action: @nextSlide
+        &Button text: "next",      action: @nextSlide

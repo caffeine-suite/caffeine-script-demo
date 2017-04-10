@@ -4,6 +4,7 @@
 module.exports = require './namespace'
 .addModules
   App:       require './App'      
+  Button:    require './Button'   
   FunButton: require './FunButton'
   Slide:     require './Slide'    
 require './Slides'
