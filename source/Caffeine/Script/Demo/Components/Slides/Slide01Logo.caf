@@ -22,4 +22,4 @@ class Slide01Logo extends Component
         axis:     :bottomCenter
         location: xw: .5, yh: 1, y: -50
         fontSize: 32
-        color:    #fff3
+        color:    #fff7
