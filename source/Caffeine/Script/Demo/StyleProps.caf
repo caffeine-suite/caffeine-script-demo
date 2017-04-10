@@ -33,5 +33,5 @@ class StyleProps extends HotStyleProps
 
   @buttonText: merge
     @text
-    color:        #fffa
+    color:        #fff
     fontSize:     16

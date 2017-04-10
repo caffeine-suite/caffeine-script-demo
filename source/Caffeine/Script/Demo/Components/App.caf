@@ -7,14 +7,14 @@ class Button extends PointerActionsMixin Component
       on:           @buttonHandlers
       cursor:       :pointer
 
-      size:         w: 100, h: 30
+      size:         w: 100, h: 50
       axis:         :centerCenter
       location: ps: :centerCenter
 
       scale:        if @pointerIsDown then .9 else 1
       animators:    scale: true
 
-      RectangleElement color: #333, radius: 1000
+      RectangleElement color: #555, radius: 1000
       TextElement
         &StyleProps.buttonText
         size:         cs: 1
@@ -36,14 +36,15 @@ class App extends PointerActionsMixin Component
 
   render: ->
     CanvasElement
+
+      RectangleElement
+        color:        :black
+
       Element
         key:        @currentSlide.getName()
         animators:
           opacity:  toFrom: 0
           axis:     toFrom: y: -.5, x: 0
-
-        RectangleElement
-          color:        :black
 
         Element
           axis:         :centerCenter
