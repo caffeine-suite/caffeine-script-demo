@@ -9023,7 +9023,7 @@ defineModule(module, Element = (function(superClass) {
     }
   };
 
-  Element.prototype._drawChildren = function(target, elementToTargetMatrix, usingStagingBitmap) {
+  Element.prototype._drawChildren = function(target, elementToTargetMatrix) {
     var child, j, len, ref;
     ref = this.children;
     for (j = 0, len = ref.length; j < len; j++) {
@@ -9255,31 +9255,31 @@ defineModule(module, Element = (function(superClass) {
   };
 
   Element.prototype._generateDrawCache = function(targetSpaceDrawArea, elementToTargetMatrix) {
-    var d2eMatrix, dirtyAreasToDraw, dirtyDrawArea, draw, drawArea, drawCacheSpaceDrawArea, elementSpaceCacheArea, elementSpaceDrawArea, insideAreas, j, len, outsideAreas, pixelsPerPoint, ref, ref1, remainingDirtyAreas, results1;
-    drawArea = this.getElementSpaceDrawArea().roundOut();
-    if (drawArea.getArea() <= 0) {
+    var cacheSpaceDrawArea, clippedElementSpaceDrawArea, d2eMatrix, dirtyAreasToDraw, dirtyDrawArea, draw, drawCacheSpaceDrawArea, elementSpaceDrawArea, insideAreas, j, len, outsideAreas, pixelsPerPoint, ref, ref1, remainingDirtyAreas, results1;
+    elementSpaceDrawArea = this.getElementSpaceDrawArea().roundOut();
+    if (elementSpaceDrawArea.getArea() <= 0) {
       return;
     }
     pixelsPerPoint = this.getDevicePixelsPerPoint();
-    elementSpaceCacheArea = drawArea.mul(pixelsPerPoint);
-    d2eMatrix = Matrix.translateXY(-drawArea.x, -drawArea.y).scale(pixelsPerPoint).inv;
-    if (d2eMatrix.eq(this._drawCacheToElementMatrix) && elementSpaceCacheArea.size.eq((ref = this._drawCacheBitmap) != null ? ref.size : void 0)) {
+    cacheSpaceDrawArea = elementSpaceDrawArea.mul(pixelsPerPoint);
+    d2eMatrix = Matrix.translateXY(-elementSpaceDrawArea.x, -elementSpaceDrawArea.y).scale(pixelsPerPoint).inv;
+    if (d2eMatrix.eq(this._drawCacheToElementMatrix) && cacheSpaceDrawArea.size.eq((ref = this._drawCacheBitmap) != null ? ref.size : void 0)) {
       if (!(this._dirtyDrawAreas || this._redrawAll)) {
         return;
       }
     } else {
       this._clearDrawCache();
-      this._drawCacheBitmap = drawCacheManager.allocateCacheBitmap(this, elementSpaceCacheArea.size);
+      this._drawCacheBitmap = drawCacheManager.allocateCacheBitmap(this, cacheSpaceDrawArea.size);
       this._dirtyDrawAreas = null;
       this._redrawAll = true;
     }
     this._drawCacheToElementMatrix = d2eMatrix;
     this._elementToDrawCacheMatrix = this._drawCacheToElementMatrix.inv;
-    elementSpaceDrawArea = elementToTargetMatrix != null ? elementToTargetMatrix.inv.transformBoundingRect(targetSpaceDrawArea).roundOut().intersection(elementSpaceCacheArea) : void 0;
+    clippedElementSpaceDrawArea = elementToTargetMatrix != null ? elementToTargetMatrix.inv.transformBoundingRect(targetSpaceDrawArea).roundOut().intersection(elementSpaceDrawArea) : void 0;
     remainingDirtyAreas = null;
     dirtyAreasToDraw = this._dirtyDrawAreas;
-    if (elementSpaceDrawArea && neq(elementSpaceCacheArea, elementSpaceDrawArea)) {
-      ref1 = this._partitionAreasByInteresection(elementSpaceDrawArea, dirtyAreasToDraw || [elementSpaceCacheArea]), insideAreas = ref1.insideAreas, outsideAreas = ref1.outsideAreas;
+    if (clippedElementSpaceDrawArea && neq(elementSpaceDrawArea, clippedElementSpaceDrawArea)) {
+      ref1 = this._partitionAreasByInteresection(clippedElementSpaceDrawArea, dirtyAreasToDraw || [elementSpaceDrawArea]), insideAreas = ref1.insideAreas, outsideAreas = ref1.outsideAreas;
       dirtyAreasToDraw = insideAreas;
       remainingDirtyAreas = outsideAreas;
     }
@@ -10832,7 +10832,7 @@ Stream.prototype.pipe = function(dest, options) {
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(module, global) {let Caf = __webpack_require__(10);
-Caf.defMod(module, () => {let ArtSuite = __webpack_require__(12), HotStyleProps, merge; ({HotStyleProps, merge} = Caf.import(["HotStyleProps", "merge"], [ArtSuite, global]));return StyleProps = Caf.defClass(class StyleProps extends HotStyleProps {}, function(StyleProps, classSuper, instanceSuper) {this.text = {fontFamily: "AvenirNext-Regular", color: "#BDD833"}; this.slideLayout = {childrenLayout: "column", padding: 50}; this.textOnlySlideText = merge(this.text, {color: "#eee", fontSize: 100, size: {cs: 1, max: {ww: .75}}, axis: "centerCenter", align: "centerCenter", location: {ps: "centerCenter"}}); this.slideTitle = merge(this.text, {colors: ["#E4EDA7", "#BDD833", "#6D7F1E"], fontSize: 100, align: "centerCenter", size: {ww: 1, h: 150}}); this.slideBodyText = merge(this.slideTitle, {size: {ps: 1}, colors: ["#eee"], fontSize: 80}); this.buttonText = merge(this.text, {color: "#fffa", fontSize: 16});});});
+Caf.defMod(module, () => {let ArtSuite = __webpack_require__(12), HotStyleProps, merge; ({HotStyleProps, merge} = Caf.import(["HotStyleProps", "merge"], [ArtSuite, global]));return StyleProps = Caf.defClass(class StyleProps extends HotStyleProps {}, function(StyleProps, classSuper, instanceSuper) {this.text = {fontFamily: "AvenirNext-Regular", color: "#BDD833"}; this.slideLayout = {childrenLayout: "column", padding: 50}; this.textOnlySlideText = merge(this.text, {color: "#eee", fontSize: 100, size: {cs: 1, max: {ww: .75}}, axis: "centerCenter", align: "centerCenter", location: {ps: "centerCenter"}}); this.slideTitle = merge(this.text, {colors: ["#E4EDA7", "#BDD833", "#6D7F1E"], fontSize: 100, align: "centerCenter", size: {ww: 1, h: 150}}); this.slideBodyText = merge(this.slideTitle, {size: {ps: 1}, colors: ["#eee"], fontSize: 80}); this.buttonText = merge(this.text, {color: "#fff", fontSize: 16});});});
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)(module), __webpack_require__(4)))
 
 /***/ }),
@@ -15933,8 +15933,10 @@ module.exports = Types = (function() {
     return isFunction(obj != null ? obj.then : void 0);
   };
 
-  Types.isRegExp = function(obj) {
-    return obj instanceof RegExp;
+  Types.isRegExp = ArtStandardLibMultipleContextTypeSupport ? function(obj) {
+    return obj.constructor.name === "RegExp";
+  } : function(obj) {
+    return obj.constructor === RegExp;
   };
 
   Types.isNumber = isNumber = function(obj) {
@@ -23905,9 +23907,9 @@ module.exports = Eq = (function() {
 /* 122 */
 /***/ (function(module, exports, __webpack_require__) {
 
-/* WEBPACK VAR INJECTION */(function(global) {var InspectedObjects, dateFormat, deepMap, escapeJavascriptString, inspectedObjectLiteral, isClass, isDate, isFunction, isNonNegativeInt, isPlainArray, isPlainObject, isPromise, isString, ref;
+/* WEBPACK VAR INJECTION */(function(global) {var InspectedObjects, dateFormat, deepMap, escapeJavascriptString, inspectedObjectLiteral, isClass, isDate, isFunction, isNonNegativeInt, isPlainArray, isPlainObject, isPromise, isRegExp, isString, ref;
 
-ref = __webpack_require__(11), isDate = ref.isDate, deepMap = ref.deepMap, isNonNegativeInt = ref.isNonNegativeInt, isClass = ref.isClass, isPlainArray = ref.isPlainArray, isPlainObject = ref.isPlainObject, isString = ref.isString, isFunction = ref.isFunction, isPromise = ref.isPromise;
+ref = __webpack_require__(11), isDate = ref.isDate, deepMap = ref.deepMap, isNonNegativeInt = ref.isNonNegativeInt, isClass = ref.isClass, isPlainArray = ref.isPlainArray, isPlainObject = ref.isPlainObject, isString = ref.isString, isFunction = ref.isFunction, isPromise = ref.isPromise, isRegExp = ref.isRegExp;
 
 escapeJavascriptString = __webpack_require__(24).escapeJavascriptString;
 
@@ -23953,6 +23955,8 @@ module.exports = InspectedObjects = (function() {
           }
         };
       }
+    } else if (isRegExp(m)) {
+      return inspectedObjectLiteral("" + m);
     } else if (isDate(m)) {
       return inspectedObjectLiteral(dateFormat(m, "UTC:yyyy-mm-dd HH:MM:ss Z"));
     } else if (isClass(m)) {
@@ -25832,7 +25836,7 @@ function base64DetectIncompleteChar(buffer) {
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(module, global) {let Caf = __webpack_require__(10);
-Caf.defMod(module, () => {let ArtSuite = __webpack_require__(12), PointerActionsMixin, Component, Element, RectangleElement, TextElement, CanvasElement, Button; ({PointerActionsMixin, Component, Element, RectangleElement, TextElement, CanvasElement, Button} = Caf.import(["PointerActionsMixin", "Component", "Element", "RectangleElement", "TextElement", "CanvasElement", "Button"], [ArtSuite, global]));Button = Caf.defClass(class Button extends PointerActionsMixin(Component) {}, function(Button, classSuper, instanceSuper) {this.prototype.render = function() {let StyleProps = __webpack_require__(37); return Element({on: this.buttonHandlers, cursor: "pointer", size: {w: 100, h: 30}, axis: "centerCenter", location: {ps: "centerCenter"}, scale: this.pointerIsDown ? .9 : 1, animators: {scale: true}}, RectangleElement({color: "#333", radius: 1000}), TextElement(StyleProps.buttonText, {size: {cs: 1}, axis: "centerCenter", location: {ps: "centerCenter"}, text: this.props.text}));};}); return App = Caf.defClass(class App extends PointerActionsMixin(Component) {}, function(App, classSuper, instanceSuper) {let slides, Slides = __webpack_require__(238); this.stateFields({slides: slides = Caf.each(Slides.modules, [], (v, k, into) => {into.push(v);}), currentSlideIndex: 0}); this.getter({currentSlide: function() {return this.slides[Caf.mod(this.currentSlideIndex, this.slides.length)];}}); this.prototype.previousSlide = function() {return this.currentSlideIndex -= 1;}; this.prototype.nextSlide = function() {return this.currentSlideIndex += 1;}; this.prototype.render = function() {return CanvasElement(Element({key: this.currentSlide.getName(), animators: {opacity: {toFrom: 0}, axis: {toFrom: {y: -.5, x: 0}}}}, RectangleElement({color: "black"}), Element({axis: "centerCenter", location: {ps: "centerCenter"}, size: {w: 1920, h: 1080}, scale: (ps, cs) => {return ps.div(cs).min();}}, this.currentSlide())), Element({childrenLayout: "row", size: {cs: 1}, padding: 5, on: this.buttonHandlers, animators: {opacity: true}, opacity: this.hover ? 1 : .5}, Button({text: "previous", action: this.previousSlide}), Element(), Button({text: "next", action: this.nextSlide})));};});});
+Caf.defMod(module, () => {let ArtSuite = __webpack_require__(12), PointerActionsMixin, Component, Element, RectangleElement, TextElement, CanvasElement, Button; ({PointerActionsMixin, Component, Element, RectangleElement, TextElement, CanvasElement, Button} = Caf.import(["PointerActionsMixin", "Component", "Element", "RectangleElement", "TextElement", "CanvasElement", "Button"], [ArtSuite, global]));Button = Caf.defClass(class Button extends PointerActionsMixin(Component) {}, function(Button, classSuper, instanceSuper) {this.prototype.render = function() {let StyleProps = __webpack_require__(37); return Element({on: this.buttonHandlers, cursor: "pointer", size: {w: 100, h: 50}, axis: "centerCenter", location: {ps: "centerCenter"}, scale: this.pointerIsDown ? .9 : 1, animators: {scale: true}}, RectangleElement({color: "#555", radius: 1000}), TextElement(StyleProps.buttonText, {size: {cs: 1}, axis: "centerCenter", location: {ps: "centerCenter"}, text: this.props.text}));};}); return App = Caf.defClass(class App extends PointerActionsMixin(Component) {}, function(App, classSuper, instanceSuper) {let slides, Slides = __webpack_require__(238); this.stateFields({slides: slides = Caf.each(Slides.modules, [], (v, k, into) => {into.push(v);}), currentSlideIndex: 0}); this.getter({currentSlide: function() {return this.slides[Caf.mod(this.currentSlideIndex, this.slides.length)];}}); this.prototype.previousSlide = function() {return this.currentSlideIndex -= 1;}; this.prototype.nextSlide = function() {return this.currentSlideIndex += 1;}; this.prototype.render = function() {return CanvasElement(RectangleElement({color: "black"}), Element({key: this.currentSlide.getName(), animators: {opacity: {toFrom: 0}, axis: {toFrom: {y: -.5, x: 0}}}}, Element({axis: "centerCenter", location: {ps: "centerCenter"}, size: {w: 1920, h: 1080}, scale: (ps, cs) => {return ps.div(cs).min();}}, this.currentSlide())), Element({childrenLayout: "row", size: {cs: 1}, padding: 5, on: this.buttonHandlers, animators: {opacity: true}, opacity: this.hover ? 1 : .5}, Button({text: "previous", action: this.previousSlide}), Element(), Button({text: "next", action: this.nextSlide})));};});});
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)(module), __webpack_require__(4)))
 
 /***/ }),
@@ -37632,7 +37636,7 @@ formattedInspectObject = function(m, maxLineLength, options) {
       } else if (ansiSafeStringLength(inspected) > maxLineLength - (key.length + 2)) {
         inspected = "" + newLineWithIndentString + inspected + "\n";
       }
-      if (!key.match(/^[-._a-zA-Z[_a-zA-Z0-9]*$/)) {
+      if (!/^[-~!@\#$%^&*_+=|\\<>?\/.$\w\u007f-\uffff]+$/.test(key)) {
         key = inspect(key);
       }
       inspectedLength += ansiSafeStringLength(inspected) + key.length + 2;
@@ -45515,6 +45519,7 @@ module.exports = createWithPostCreate(CanvasElement = (function(superClass) {
    */
 
   function CanvasElement(options) {
+    var ref1;
     if (options == null) {
       options = {};
     }
@@ -45522,13 +45527,13 @@ module.exports = createWithPostCreate(CanvasElement = (function(superClass) {
     this.canvasElement = this;
     this._focusedElement = null;
     this._wasFocusedElement = null;
-    this._devicePixelsPerPoint = 1;
+    if (options.disableRetina) {
+      log.error("DEPRICATED: disableRetina. use: pixelsPerPoint: 1");
+    }
+    this._devicePixelsPerPoint = (ref1 = options.pixelsPerPoint) != null ? ref1 : options.disableRetina ? 1 : getDevicePixelRatio();
     this._domEventListeners = [];
     this._drawEpochPreprocessing = [];
     this._drawEpochQueued = false;
-    if (!options.disableRetina) {
-      this.retinaSupport = true;
-    }
     this._documentToElementMatrix = this._elementToDocumentMatrix = this._absToDocumentMatrix = this._documentToAbsMatrix = null;
     this._attach(this._getOrCreateCanvasElement(options));
     this.engineStat = new EngineStat;
@@ -45816,15 +45821,10 @@ module.exports = createWithPostCreate(CanvasElement = (function(superClass) {
       };
     })(this));
     this._canvas = canvas;
-    this._retinaSetup();
     if (canvas) {
       this._updateCanvasGeometry();
       return this._attachDomEventListeners();
     }
-  };
-
-  CanvasElement.prototype._retinaSetup = function() {
-    return this._devicePixelsPerPoint = this.retinaSupport ? getDevicePixelRatio() : 1;
   };
 
   CanvasElement.prototype._sizeChanged = function(newSize, oldSize) {
@@ -67630,7 +67630,7 @@ module.exports = {
 		"start": "webpack-dev-server --hot --inline --progress",
 		"test": "webpack-dev-server --progress"
 	},
-	"version": "1.27.4"
+	"version": "1.27.5"
 };
 
 /***/ }),
@@ -67814,7 +67814,7 @@ module.exports = {
 		"start": "webpack-dev-server --hot --inline --progress",
 		"test": "webpack-dev-server --progress"
 	},
-	"version": "1.7.2"
+	"version": "1.8.0"
 };
 
 /***/ }),
