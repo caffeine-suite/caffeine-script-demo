@@ -36,6 +36,8 @@ class App extends PointerActionsMixin Component
       Element
         childrenLayout: :row
         size:           cs: 1
+        location:       yh: 1
+        axis:           :bottomLeft
         padding:        5
         on:             @buttonHandlers
         animators:      opacity: true

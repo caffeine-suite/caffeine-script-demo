@@ -5,13 +5,13 @@ class Slide08Highlights extends PointerActionsMixin Component
   render: ->
 
     &Slide
-      title: "" Beyond JavaScript
+      title: "" CaffeineScript
       align: :centerLeft
       body:
         """
-          Beautiful, Logical and Consistent
-          Everything Returns a Value
-          Seamless CommonJS Modules
-          Comprehensions and Iteration
-          Expressive Literals
-          Safe Semantics
+          ‣ Beautiful, Logical and Consistent
+          ‣ FP-Friendly: Everything Returns a Value
+          ‣ Seamless CommonJS Modules
+          ‣ Powerful Comprehensions and Iteration
+          ‣ Expressive Literals
+          ‣ Safe JavaScript Semantics

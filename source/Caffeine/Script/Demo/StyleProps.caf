@@ -27,6 +27,7 @@ class StyleProps extends HotStyleProps
 
   @slideBodyText: merge
     @slideTitle
+    padding:      h: 150
     size:         ps: 1
     colors:       [] #eee # #E4EDA7 # #BDD833 # #6D7F1E
     fontSize:     80

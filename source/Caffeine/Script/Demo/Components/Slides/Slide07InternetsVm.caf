@@ -11,4 +11,5 @@ class Slide07InternetsVm extends Component
           Keep the Heart, replace the Body.
 
           JavaScript: The Internet's VM
-          JavaScript: The Internet's Assembly Language
+          JavaScript: The Internet's
+                               Assembly Language
