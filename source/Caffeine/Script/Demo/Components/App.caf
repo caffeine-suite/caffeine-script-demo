@@ -21,6 +21,7 @@ class App extends PointerActionsMixin Component
       Element
         key:        @currentSlide.getName()
         # cacheDraw:  true
+        on: pointerClick: @nextSlide
         animators:
           opacity:  toFrom: 0
           axis:     toFrom: y: -.5, x: 0
@@ -34,17 +35,18 @@ class App extends PointerActionsMixin Component
           @currentSlide()
 
       Element
+        receivePointerEvents: :passToChildren
         childrenLayout: :row
         size:           cs: 1
         location:       yh: 1
         axis:           :bottomLeft
         padding:        5
-        on:             @buttonHandlers
+        on:             @hoverHandlers
         animators:      opacity: true
         opacity:        if @hover then 1 else .5
 
         &Button text: "previous",  action: @previousSlide
 
-        Element()
+        Element receivePointerEvents: :never
 
         &Button text: "next",      action: @nextSlide

@@ -7,6 +7,7 @@ class Slide01Logo extends Component
 
     Element
       Element
+        receivePointerEvents: :passToChildren
         childrenLayout: :row
         size:           h: 100, wcw: 1
         axis:           :centerCenter

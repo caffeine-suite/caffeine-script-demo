@@ -1,4 +1,5 @@
 import &ArtSuite
+{openLinkInNewWindow} = &ArtFoundation.Browser
 
 class Slide20PoweredByCaffeineMc extends Component
 
@@ -19,3 +20,5 @@ class Slide20PoweredByCaffeineMc extends Component
         size: h: 400, w: (ps, cs) -> cs.aspectRatio * 400
         layout: :fit
         source: :assets/CaffeineMcLogo.png
+        cursor: :pointer
+        on: pointerClick: -> openLinkInNewWindow :https://github.com/shanebdavis/caffeine-mc
