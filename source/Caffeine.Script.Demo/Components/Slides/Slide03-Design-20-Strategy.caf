@@ -1,0 +1,13 @@
+import &ArtSuite
+
+class DesignStrategy extends Component
+
+  render: ->
+    &Slide
+      title: "" Design Thinking for Progamming
+      align: :centerLeft
+      body:
+        """
+          Focus - objective productivity
+          Details - what matters?
+          Ideas - don't be affraid to try new things

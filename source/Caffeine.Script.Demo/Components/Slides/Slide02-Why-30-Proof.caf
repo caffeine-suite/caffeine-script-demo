@@ -1,0 +1,11 @@
+import &ArtSuite
+
+class Proof extends Component
+
+  render: ->
+    &Slide
+      title: "" Programmer Productivity
+      body:
+        """
+          Fundemental Limiting Factor
+          Fundemental Cost

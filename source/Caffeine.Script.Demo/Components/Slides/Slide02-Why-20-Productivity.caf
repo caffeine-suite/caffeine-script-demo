@@ -1,0 +1,11 @@
+import &ArtSuite
+
+class Productivity extends Component
+
+  render: ->
+    &Slide
+      title: "" When it comes to Programming
+      body:
+        """
+          Productivity
+          is the ONLY thing that matters.

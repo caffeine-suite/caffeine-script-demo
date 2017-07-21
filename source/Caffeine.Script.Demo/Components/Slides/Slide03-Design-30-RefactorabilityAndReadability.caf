@@ -1,0 +1,13 @@
+import &ArtSuite
+
+class Refactorability extends Component
+
+  render: ->
+    &Slide
+      title: "" Refactorability is THE Code Metric
+      body:
+        """
+           - readability
+           - reducing the need to edit
+           - reducing the effort to edit
+           - reducing the errors due to edits

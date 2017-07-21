@@ -1,0 +1,10 @@
+import &ArtSuite
+
+class DesignStrategy extends Component
+
+  render: ->
+    &Slide
+      body:
+        """
+          JavaScript is THE
+          universal language.

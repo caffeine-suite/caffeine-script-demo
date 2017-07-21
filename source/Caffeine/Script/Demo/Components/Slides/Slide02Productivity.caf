@@ -1,6 +1,0 @@
-import &ArtSuite
-
-class Slide02Productivity extends Component
-
-  render: ->
-    &Slide body: "" In programming, productivity is everything.

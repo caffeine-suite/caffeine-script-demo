@@ -10,8 +10,8 @@ class Slide08Highlights extends PointerActionsMixin Component
       body:
         """
           ‣ Beautiful, Logical and Consistent
-          ‣ FP-Friendly: Everything Returns a Value
-          ‣ Seamless CommonJS Modules
-          ‣ Powerful Comprehensions and Iteration
+          ‣ FP-Friendly
+          ‣ Streamlined Modules
+          ‣ Powerful Comprehensions
           ‣ Expressive Literals
           ‣ Safe JavaScript Semantics

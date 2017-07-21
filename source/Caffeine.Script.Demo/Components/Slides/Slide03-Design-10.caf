@@ -1,6 +1,6 @@
 import &ArtSuite
 
-class Slide03Beauty extends Component
+class Design extends Component
 
   render: ->
     &Slide body:

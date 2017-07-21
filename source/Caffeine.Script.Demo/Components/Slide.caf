@@ -11,6 +11,10 @@ class Slide extends Component
       title && TextElement
         &StyleProps.slideTitle
         text:   title
+        unless body
+          align: :centerCenter
+          location: ps: .5
+          axis: .5
 
       body && TextElement
         &StyleProps.slideBodyText

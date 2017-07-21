@@ -1,0 +1,28 @@
+
+Div
+  ""
+    Click this link to learn
+    about an awesome language:
+  A
+    href: :http://CafScript.com
+    :CafScript
+
+""
+  The rest of this indented area is in the string.
+  Even this: '"" """'
+  Because it is indented, almost nothing needs to be escaped.
+
+# Array of 3-element Arrays
+a =
+  "Bob"    1976  :male
+  "Alice"  1978  :female
+
+
+##
+  All indented lines after a double ## are escaped!
+  All characters are legal, including any sequence of: / * #
+
+  ##
+    All indented lines after a double ## are escaped!
+    All characters are legal, including any sequence of: / * #
+

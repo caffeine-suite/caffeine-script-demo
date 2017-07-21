@@ -1,0 +1,11 @@
+import &ArtSuite
+
+class IBelieve extends Component
+
+  render: ->
+    &Slide
+      title: "" I believe...
+      body:
+        ""
+          The SOLE PURPOSE of any programming langauge
+          is to make us more productive.

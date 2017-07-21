@@ -1,0 +1,13 @@
+{
+  defineModule, log, createWithPostCreate, merge, formattedInspect, pluralize
+  Element, RectangleElement, TextElement
+  FluxComponent, PointerActionsMixin
+} = Neptune.Art.Suite
+
+{Widgets} = Neptune.Imikimi.Oz.Client.Components
+{InlineProfile} = Neptune.Imikimi.Oz.Client.Components.Partials
+{PopOver, SubmitField, ShowMedia, Button} = Widgets
+
+{TextPalette, ImikimiPalette, TextStyles} = Neptune.Imikimi.Style
+
+defineModule module, ->

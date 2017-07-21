@@ -1,0 +1,21 @@
+
+
+import &ArtSuite
+
+##
+  Programming is the most powerful tool ever invented. With it
+  you can make any other tool with a programming language, including
+  a new programming language.
+
+class ProgrammingLetsUs extends Component
+
+  render: ->
+    &Slide
+      title: "" Programming Empowers
+      body:
+        """
+          Design Amazing Products
+          Meaningfully Impact Lives
+
+
+
