@@ -5,3 +5,4 @@ class ProgrammingIsAwesome extends Component
   render: ->
     &Slide
       body: "" Programming is Awesome.
+
