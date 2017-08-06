@@ -26,3 +26,42 @@ a =
     All indented lines after a double ## are escaped!
     All characters are legal, including any sequence of: / * #
 
+
+
+
+arrayBlocks =
+  "john"
+  "george"
+  "sally"
+
+
+stringBlocks =
+  ""
+    This 100%, USDA,
+    "Grade-A" string.
+
+
+
+##
+  Comment Blocks
+
+     ########
+   ############
+  ###       ####
+  ##   #     ###
+  ##  ##    ####
+   #   ########
+    #   ####
+
+  CaffeineScript
+
+
+
+
+# Function-invocation blocks
+MyProfileComponent
+  MyUserIconComponent
+    user: :Mary
+    color: #a376d6
+
+
