@@ -4,20 +4,17 @@ class Button extends PointerActionsMixin Component
 
   render: ->
     Element
+      :centerCenter
+      :pointerCursor
       on:           @buttonHandlers
-      cursor:       :pointer
 
-      size:         w: 100, h: 50
-      axis:         :centerCenter
-      location: ps: :centerCenter
+      size:         w: 100  h: 50
 
       scale:        if @pointerIsDown then .9 else 1
       animators:    scale: true
 
-      RectangleElement color: #555, radius: 1000
+      RectangleElement color: #555  radius: 1000
       TextElement
         &StyleProps.buttonText
-        size:         cs: 1
-        axis:         :centerCenter
-        location: ps: :centerCenter
+        :childrenSize :centerCenter
         text:         @props.text

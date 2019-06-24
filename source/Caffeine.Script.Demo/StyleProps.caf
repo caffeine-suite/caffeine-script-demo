@@ -2,7 +2,7 @@ import &ArtSuite
 
 class StyleProps extends HotStyleProps
   @text:
-    fontFamily:   "AvenirNext-Regular"
+    fontFamily:   :AvenirNext-Regular
     color:        #BDD833
 
   @slideLayout:
@@ -11,9 +11,9 @@ class StyleProps extends HotStyleProps
 
   @textOnlySlideText: merge
     @text
-    color:        #eee # #E4EDA7 # #BDD833 # #6D7F1E
+    color:        #eee
     fontSize:     100
-    size:         cs: 1, max: ww: .75
+    size:         cs: 1   max: ww: .75
     axis:         :centerCenter
     align:        :centerCenter
     location: ps: :centerCenter
@@ -23,13 +23,13 @@ class StyleProps extends HotStyleProps
     colors:       #E4EDA7 #BDD833 #6D7F1E
     fontSize:     100
     align:        :centerCenter
-    size:         ww: 1, h: 150
+    size:         ww: 1   h: 150
 
   @slideBodyText: merge
     @slideTitle
     padding:      h: 150
     size:         ps: 1
-    colors:       [] #eee # #E4EDA7 # #BDD833 # #6D7F1E
+    colors:       [] #eee
     fontSize:     80
 
   @buttonText: merge

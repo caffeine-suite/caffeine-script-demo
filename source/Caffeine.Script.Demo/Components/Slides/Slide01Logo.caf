@@ -1,26 +1,24 @@
 import &ArtSuite
 
-
 class Slide01Logo extends Component
 
   render: ->
 
     Element
       Element
+        :row :centerCenter
         receivePointerEvents: :passToChildren
-        childrenLayout: :row
-        size:           h: 100, wcw: 1
-        axis:           :centerCenter
-        location: ps:   :centerCenter
-        scale:          (ps, cs) -> ps.div(cs).min() * .6
+        size:   h: 100  w: 300
+        scale:  (ps, cs) -> ps.div(cs).min() * .6
 
         &FunButton source: :assets/CaffeineScriptIcon.png
         &FunButton source: :assets/CaffeineScriptText.png
 
       TextElement
         &StyleProps.text
-        text:     "" by Shane Brinkman-Davis Delamore @ imikimi LLC
-        axis:     :bottomCenter
-        location: xw: .5, yh: 1, y: -50
-        fontSize: 32
-        color:    #fff7
+        :childrenSize
+        axis:       :bottomCenter
+        text:       "" by Shane Brinkman-Davis Delamore @ imikimi LLC
+        location:   xw: .5  yh: 1  y: -50
+        fontSize:   32
+        color:      #fff7

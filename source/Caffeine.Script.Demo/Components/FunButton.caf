@@ -2,17 +2,13 @@ import &ArtSuite
 
 class FunButton extends PointerActionsMixin Component
   render: ->
-    {angle, source, scale} = @props
+    @props extract angle, source, scale
 
     BitmapElement
+      :centerCenter :pointerCursor
+      layoutMode:   :fit
       source:       source
-
       on:           @buttonHandlers
-      cursor:       :pointer
-      layout:       :fit
-
-      axis:         :centerCenter
-      location: ps: :centerCenter
 
       receivePointerEvents: (pointInElementSpace, element) ->
         center = element.currentSize.div 2

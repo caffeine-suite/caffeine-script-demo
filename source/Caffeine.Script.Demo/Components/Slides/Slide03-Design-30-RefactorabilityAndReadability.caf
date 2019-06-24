@@ -5,6 +5,7 @@ class Refactorability extends Component
   render: ->
     &Slide
       title: "" Refactorability is THE Code Metric
+      align: :centerLeft
       body:
         """
            - readability

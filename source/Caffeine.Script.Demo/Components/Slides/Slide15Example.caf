@@ -8,14 +8,14 @@ class Slide10Example extends PointerActionsMixin Component
 
   render: ->
     Element
-      on: @buttonHandlers
-      cursor: :pointer
-      padding: 100
+      :pointerCursor
+      on:       @buttonHandlers
+      padding:  100
 
       RectangleElement color: #222222
 
       Element
-        childrenLayout: :row
+        :row
 
         BitmapElement
           source: :assets/CaffeineScriptDemo.png
@@ -23,6 +23,6 @@ class Slide10Example extends PointerActionsMixin Component
 
         BitmapElement
           layoutWeight: if @showCompiled then 2 else .94
-          animators: layoutWeight: true
-          source: :assets/CaffeineScriptDemoCompiled.png
-          layout: :fit
+          animators:    layoutWeight: true
+          source:       :assets/CaffeineScriptDemoCompiled.png
+          layout:       :fit

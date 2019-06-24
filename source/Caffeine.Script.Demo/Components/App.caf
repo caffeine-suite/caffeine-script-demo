@@ -14,38 +14,34 @@ class App extends PointerActionsMixin Component
 
   render: ->
     CanvasElement
-
-      RectangleElement
-        color:        :black
+      draw: :black
 
       Element
         key:        @currentSlide.getName()
-        # cacheDraw:  true
+
         animators:
           opacity:  toFrom: 0
-          axis:     toFrom: y: -.5, x: 0
+          axis:     toFrom: y: -.5  x: 0
 
         Element
-          axis:         :centerCenter
-          location: ps: :centerCenter
-          size:         w: 1920, h: 1080
+          :centerCenter
+          size:         w: 1920 h: 1080
           scale:        (ps, cs) -> ps.div(cs).min()
 
           @currentSlide()
 
       Element
+        :row
+        :childrenSize
+        :bottomLeft
         receivePointerEvents: :passToChildren
-        childrenLayout: :row
-        size:           cs: 1
-        location:       yh: 1
-        axis:           :bottomLeft
         padding:        5
         on:             @hoverHandlers
         animators:      opacity: true
         opacity:        if @hover then 1 else .5
 
-        &Button text: "previous",  action: @previousSlide
+        &Button text: :previous   action: @previousSlide
 
         Element receivePointerEvents: :never
 
-        &Button text: "next",      action: @nextSlide
+        &Button text: :next       action: @nextSlide

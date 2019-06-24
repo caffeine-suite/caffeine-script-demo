@@ -1,12 +1,11 @@
-import &ArtSuite
-{openLinkInNewWindow} = &ArtFoundation.Browser
+import &ArtSuite, &ArtBrowserTools
 
 class Slide20PoweredByCaffeineMc extends Component
 
   render: ->
     Element
-      childrenLayout: :column
-      childrenAlignment: :center
+      :column
+      :childrenCenterCenter
       padding: bottom: 100
 
       &Slide
@@ -14,11 +13,11 @@ class Slide20PoweredByCaffeineMc extends Component
         body:
           """
             ArtSuite
-            BabelBridgeJS
+            CaffeineEight
 
-      BitmapElement
-        size: h: 400, w: (ps, cs) -> cs.aspectRatio * 400
-        layout: :fit
-        source: :assets/CaffeineMcLogo.png
-        cursor: :pointer
-        on: pointerClick: -> openLinkInNewWindow :https://github.com/shanebdavis/caffeine-mc
+      Element
+        size: h:300
+        &FunButton
+          source: :assets/CaffeineMcLogo.png
+          action: ->
+            openLink :https://github.com/shanebdavis/caffeine-mc

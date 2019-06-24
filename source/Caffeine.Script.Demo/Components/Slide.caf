@@ -3,7 +3,7 @@ import &ArtSuite
 
 class Slide extends Component
   render: ->
-    {title, body, align} = @props
+    @props extract title, body, align
 
     Element
       &StyleProps.slideLayout
@@ -11,10 +11,8 @@ class Slide extends Component
       title && TextElement
         &StyleProps.slideTitle
         text:   title
-        unless body
-          align: :centerCenter
-          location: ps: .5
-          axis: .5
+        :textCenterCenter
+        :centerCenter
 
       body && TextElement
         &StyleProps.slideBodyText
